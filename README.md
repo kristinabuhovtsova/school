@@ -1,1 +1,1 @@
-# Hello world
+# Основные браузеры: Firefox до 52, Chrome до 57, Safari до 10.1, Opera до 44 (из-за grid-area и vw) 

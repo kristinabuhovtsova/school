@@ -1,8 +1,358 @@
-a {
-    color: red;
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
 }
 
-body {
-    background-color: blue;
-    color: green; 
+
+/*******************/
+/*
+для шрифтов используются относительные единицы vw, для отступов используются px,
+сетка выполнена на grid, также использовались svg изображения и animation
+*/
+
+body{
+    background-color: rgb(187, 230, 230);
+    height:100%;
 }
+
+div.container {
+    padding-bottom:80px;
+    display: grid;
+    grid-template-areas: "resume"
+                         "forma";
+    grid-template-rows: 1fr 1fr;
+}
+
+footer {
+    position: relative;
+    bottom:0;
+    width:100%;
+}
+
+div.resume {
+    margin: 20px 100px;
+    grid-area: resume;
+    display: grid;
+    grid-template-areas: "picture information";
+    grid-template-columns: 1fr 1fr;
+}
+
+form div.form1 {
+    margin: 60px 20px 0 100px;
+    grid-area: forma;
+    display: grid;
+    grid-template-areas: "data message";
+    grid-template-columns: 1fr 1fr;
+}
+
+div.information {
+    grid-area: information;
+}
+
+div.picture {
+    grid-area: picture;
+}
+
+div.yourdata {
+    grid-area: data;
+}
+
+div.yourmessage {
+    grid-area: message;
+}
+
+p {
+    font-size: 2vw;
+    color: rgb(88, 63, 146)
+}
+
+a {
+    color:rgb(158, 152, 167);
+    font-size: 2vw;
+}
+
+a:hover {
+    color:rgb(210, 180, 255);
+}
+
+div.mydata {
+    margin-top:30px;
+}
+
+.yourmessage p:nth-child(1n+2) {
+    font-size: 1vw;
+}
+
+header, footer {
+    text-align: center;
+    background: linear-gradient(45deg, rgb(67, 0, 250), rgb(74, 196, 84));
+    height: 80px;
+    color: white;
+    padding-top: 45px;
+    font-size: 2vw;
+}
+
+input.button {
+    font-size: 1.2vw;
+    padding: 0;
+    margin: 10px 10px 10px 0;
+    border:0;
+    padding: 0 5px 0 5px; 
+    border-radius: 3px;
+    background-color: white;
+    color:rgb(88, 63, 146);
+
+}
+
+input.button:hover{
+    background-color: rgb(210, 180, 255);
+    color: rgb(85, 81, 81);
+}
+
+div.yourmessage {
+    display: grid;
+    grid-template-areas: "form text text";
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+div.choose{
+    grid-area: form;
+}
+
+
+div.textmes{
+    grid-area: text;
+}
+#mes {
+    width: 370px;
+    height: 170px;
+}
+
+img {
+    widows: auto;
+    height: 270px;
+}
+
+img.social:hover {
+    -webkit-transform: rotate(360deg);
+	-moz-transform: rotate(360deg);
+	-ms-transform: rotate(360deg);
+	-o-transform: rotate(360deg);
+	transform: rotate(360deg);
+}
+img.social{
+    -webkit-transition: all 0.5s linear 0s;
+	-moz-transition: all 0.5s linear 0s;
+	-o-transition: all 0.5s linear 0s;
+    transition: all 0.5s linear 0s;
+    width: 30px;
+    height: 30px;
+    margin: 0 10px;
+ }
+
+ img#arrow {
+     width:50px;
+     height: 100px;
+     margin: 0 auto;
+     margin-top: 100px;
+     animation: pulsing 2s infinite;
+     -webkit-animation: pulsing 2s infinite;
+ }
+
+@keyframes pulsing {
+        0% {
+          -webkit-transform: scale(0.5, 0.5);
+          transform: scale(0.5, 0.5)
+        }
+        50% {
+          -webkit-transform: scale(1.0, 1.0);
+          transform: scale(1.0, 1.0);
+        }
+        100% {
+          -webkit-transform: scale(0.5, 0.5);
+          transform: scale(0.5, 0.5);
+        }
+}
+/**************
+***************
+**************/
+
+@media (min-width: 1100px) and (max-width: 1240px) { 
+    input#mes {
+        width: 290px;
+    }
+    input#mes, input.button {
+        display: block;
+    }
+   
+}
+
+@media (min-width: 775px) and (max-width: 1100px) { 
+
+    input#mes {
+        width: 180px;
+    }
+
+    div.picture {
+        margin-right:20px;
+        height:230px;
+    }
+    div.picture img {
+        height:230px;
+    }
+}
+
+@media (min-width: 530px) and (max-width: 775px) { 
+    
+    img#arrow {
+     width:25px;
+     height: 50px;
+     margin: 0 auto;
+     margin-top:50px;
+    }
+    div.resume {
+        margin: 10px 10px 10px 40px;
+        width: 470px;
+    }
+    form {
+        width: 470px;
+    }
+    form div.form1 {
+        margin-left: 40px;
+    }
+
+    div.yourdata {
+        width: 150px;
+    }
+
+    div.yourmessage {
+        width: 350px;
+    }
+
+    input#mes {
+        width: 180px;
+        height: 140px;
+    }
+
+    input#mes, input.button {
+        display: block;
+    }
+
+    div.picture, div.picture img{
+        width:150px;
+        height: 120px;
+    }
+
+}
+@media (max-width: 530px) {
+    div.container {
+        margin: 0 40px;
+        padding-bottom:80px;
+        display: grid;
+        grid-template-areas: "resume"
+                             "forma";
+        grid-template-rows: 1fr 1fr;
+    }
+
+    div.resume {
+        margin: 0 auto;
+        grid-area: resume;
+        display: grid;
+        grid-template-areas: "picture picture"
+                             "information information";
+        grid-template-rows: 1fr 1fr;
+    }
+    
+    form div.form1 {
+        margin: 0 auto;
+        margin-top: -250px;
+        grid-area: forma;
+        display: grid;
+        grid-template-areas: "data data"
+                             "message message";
+        grid-template-rows: 1fr 1fr;
+    }
+    
+    div.information {
+        grid-area: information;
+        text-align: center;
+    }
+    
+    div.picture {
+        grid-area: picture;
+    }
+
+    div.picture img{
+        width: 250px;
+        height: 150px;
+    }
+    header, footer {
+        height: 30px;
+    }
+
+    footer div {
+        margin-top:-20px;
+    }
+    footer div.images {
+        margin-top: 5px;
+    }
+
+    header {
+        padding-top: 20px;
+    }
+    input#mes {
+        width: 100px;
+        height: 60px;
+    }
+
+    input#mes, input.button {
+        display: block;
+    }
+
+    div.yourdata {
+        grid-area: data;
+    }
+    
+    div.yourmessage {
+        margin-top:20px;
+        grid-area: message;
+    }
+
+    img#arrow {
+        width: 20px;
+        height: 40px;
+        margin-top:-40px;
+     
+   }  
+ }
+ @media (min-width:420px) and (max-width: 530px) {
+    div.picture {
+        margin-left: 80px;
+    }
+ }
