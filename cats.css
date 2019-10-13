@@ -1,0 +1,12 @@
+ul {
+    margin-top: -20px;
+    margin-left: 30px;
+}
+ul li {
+    display: inline-block;
+    margin:5px;
+    background-color: aquamarine;
+}
+ul li:hover {
+    background-color: blanchedalmond;
+}

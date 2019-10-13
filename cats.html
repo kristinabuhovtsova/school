@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="cats.css">
+</head>
+<body>
+    <div class="form">
+    <select id ="allcats">
+    </select>
+    <ul>
+      <li id="name">name</li>
+      <li id="eye_color">eye_color</li>
+      <li id="gender">gender</li>
+      <li id="films">films</li>
+    </div>
+    </ul> 
+
+    <div id="information">
+    </div>
+
+<script>
+document.getElementById('allcats').addEventListener('click', renderCatPic)
+
+function renderCatPic(){
+  fetch('https://ghibliapi.herokuapp.com/species')
+  .then(response => response.json())
+  .then(piece => {
+    let output=''
+    const lstcat=[]
+    piece.forEach(function(want) {
+      if (want.name==="Cat") {
+        lstcat.push(want)
+        const ppl=want.people;
+        ppl.forEach(function (el,ind) {
+          output+= `
+          <option id='index'>
+          ${ind}
+        </option>
+        `;})
+
+    }})
+    document.getElementById("allcats").innerHTML=output;
+    console.log(typeof lstcat)
+  })
+}
+
+
+function getAllChars() {
+    fetch('https://ghibliapi.herokuapp.com/species')
+    .then(response=> response.json())
+    .then(data=> console.log(data))
+}
+
+getAllChars()
+</script>
+</body>
+</html>
