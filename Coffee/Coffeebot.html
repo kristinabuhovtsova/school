@@ -129,6 +129,7 @@ function Reset () {
       syropvolume+=cnt*50
     }
     document.getElementById('syrop').disabled=false
+    document.getElementById('milk').disabled=false
     order=[]
     totalprice=0
     
@@ -192,7 +193,11 @@ function CoffeeChoose () {
         {showcof=String(order[0])}
     milkcheck=true
     screen.innerHTML=showcof + " " + String(totalprice)
-    }
+    if (order[0] === "Банановый латте" || order[0] === "Ванильный капучино" || order[0] === "Флэт уайт"){
+      document.getElementById('syrop').disabled=true
+      document.getElementById('milk').disabled=true
+    }  
+}
 }}
 document.getElementById('milk').addEventListener("click", AddMilk)
 document.getElementById('syrop').addEventListener("click", AddSyrop)
@@ -345,6 +350,7 @@ function Pay () {
 document.getElementById("ready").addEventListener("click", Finish)
 function Finish () {
               document.getElementById('syrop').disabled=false
+              document.getElementById('milk').disabled=false
               document.getElementById('ready').style.display="none"
               if (glass===1) {
                 glass250-=1
