@@ -45,11 +45,14 @@ div#green {
     line-height:15px;
     text-align:center;
 }
-
+div#ready {
+  border: 7px solid rgb(217, 219, 57);
+  width: 212px;
+  height: 212px;
+  display:none;
+}
 img {
     margin-bottom: 20px;
-    border: 7px solid rgb(217, 219, 57);
-    animation: flash 20s;
 }
 
 @-webkit-keyframes flash {
