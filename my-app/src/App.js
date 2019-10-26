@@ -20,12 +20,17 @@ function CreditPayment (props) {
   if (props.method==="Аннуитентные платежи"){
   const perc=props.percent/1200
   const b=Math.pow(1+perc, props.period*12)
-  if (isNaN(props.percent) || isNaN (props.ammount) || isNaN(props.period) || isNaN(props.curdata)) {
+  if (isNaN(props.percent) || isNaN (props.ammount) || isNaN(props.period)) {
     return <p></p>}
   else {
-    return <p>{props.ammount*(perc+perc/(b-1))}</p>}}
+    return <div>
+      <p>Ежемесяная плата:</p>
+      <p>{Math.ceil(props.ammount*(perc+perc/(b-1)))}</p>
+      <p>Общая сумма выплат:</p>
+      <p>{Math.ceil(props.period*12*props.ammount*(perc+perc/(b-1)))}</p>
+      </div>}}
   else if (props.method==="Дифференцированные платежи") {
-    if (isNaN(props.percent) || isNaN (props.ammount) || isNaN(props.period) || isNaN(props.curdata)) {
+    if (isNaN(props.percent) || isNaN (props.ammount) || isNaN(props.period)) {
       return <p></p>}
     else{
     const perc=props.percent/1200
@@ -45,7 +50,7 @@ function CreditPayment (props) {
         else {dat[1]='01'
            dat[2]=String(Number(dat[2])+1)
           table.datae[i]=dat[0]+'.01.'+dat[2]}}
-      table.pay[i]=Math.ceil(fixedpay+(props.ammount-(fixedpay*(i-1)))*perc)
+      table.pay[i]=fixedpay+(props.ammount-(fixedpay*(i-1)))*perc
       rows.push ([table.datae[i],table.pay[i]])}
           }
     return <div>
@@ -135,7 +140,7 @@ function DepositPayment (props) {
   dat=dat.split('.')
   if (props.method==="Простые проценты"){
   const perc=props.percent/1200
-  if (isNaN(props.percent) || isNaN (props.ammount) || isNaN(props.period) || isNaN(props.curdata)) {
+  if (isNaN(props.percent) || isNaN (props.ammount) || isNaN(props.period)) {
     return <p></p>}
   else {
     return <div>
@@ -146,7 +151,7 @@ function DepositPayment (props) {
     </div>
 }}
   else if (props.method==="Сложные проценты") {
-    if (isNaN(props.percent) || isNaN (props.ammount) || isNaN(props.period) || isNaN(props.curdata)) {
+    if (isNaN(props.percent) || isNaN (props.ammount) || isNaN(props.period)) {
       return <p></p>}
     else{
     const perc=props.percent*12/36500
